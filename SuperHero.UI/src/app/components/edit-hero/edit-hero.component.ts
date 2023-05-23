@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SuperHero } from 'src/app/models/super-hero';
 
 @Component({
   selector: 'app-edit-hero',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-hero.component.css']
 })
 export class EditHeroComponent {
+	@Input() hero?: SuperHero;
 
+	constructor() {}
+
+	ngOnInit(): void {
+
+	}
+
+	updateHero(hero: SuperHero){
+		
+	}
+	
+	deleteHero(hero: SuperHero){
+
+	}
+
+	createHero(hero: SuperHero){
+
+	}
 }

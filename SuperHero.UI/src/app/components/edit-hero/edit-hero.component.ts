@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SuperHero } from 'src/app/models/super-hero';
+import { SuperHeroService } from 'src/app/services/super-hero.service';
 
 @Component({
   selector: 'app-edit-hero',
@@ -8,22 +9,29 @@ import { SuperHero } from 'src/app/models/super-hero';
 })
 export class EditHeroComponent {
 	@Input() hero?: SuperHero;
+	@Output() heroesUpdate = new EventEmitter<SuperHero[]>();
 
-	constructor() {}
+	constructor(private superHeroService: SuperHeroService) {}
 
 	ngOnInit(): void {
 
 	}
 
-	updateHero(hero: SuperHero){
-		
-	}
-	
-	deleteHero(hero: SuperHero){
-
+	updateHero(hero: SuperHero) {
+		this.superHeroService
+		.updateHero(hero)
+		.subscribe((heroes: SuperHero[]) => this.heroesUpdate.emit(heroes));
 	}
 
-	createHero(hero: SuperHero){
+	deleteHero(hero: SuperHero) {
+		this.superHeroService
+		.deleteHero(hero)
+		.subscribe((heroes: SuperHero[]) => this.heroesUpdate.emit(heroes));
+	}
 
+	createHero(hero: SuperHero) {
+		this.superHeroService
+		.createHero(hero)
+		.subscribe((heroes: SuperHero[]) => this.heroesUpdate.emit(heroes));
 	}
 }

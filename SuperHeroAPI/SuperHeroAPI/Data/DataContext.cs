@@ -9,5 +9,5 @@ namespace SuperHeroAPI.Data
 		}
 
 		public DbSet<SuperHero> SuperHeroes { get; set; }
-    }
+	}
 }

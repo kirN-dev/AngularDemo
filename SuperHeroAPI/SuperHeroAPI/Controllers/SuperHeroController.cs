@@ -14,11 +14,11 @@ namespace SuperHeroAPI.Controllers
 		private readonly DataContext _context;
 
 		public SuperHeroController(DataContext context)
-        {
+		{
 			_context = context;
 		}
 
-        [HttpGet]
+		[HttpGet]
 		public async Task<ActionResult<List<SuperHero>>> GetSuperHero()
 		{
 			return Ok(await _context.SuperHeroes.ToListAsync());
